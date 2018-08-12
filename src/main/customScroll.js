@@ -187,7 +187,7 @@ class CustomScroll extends Component {
   calculateNewScrollHandleTop(clickEvent) {
     const domNode = reactDOM.findDOMNode(this)
     const boundingRect = domNode.getBoundingClientRect()
-    const currentTop = boundingRect.top + window.pageYOffset
+    const currentTop = boundingRect.top + (typeof window !== 'undefined' ? window.pageYOffset : 0)
     const clickYRelativeToScrollbar = clickEvent.pageY - currentTop
     const scrollHandleTop = this.getScrollHandleStyle().top
     let newScrollHandleTop
